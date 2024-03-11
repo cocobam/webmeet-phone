@@ -1,0 +1,27 @@
+URL:
+http://hysi.com.tw/chumpower/api/abc/admin/login_app/A000_app
+
+Method:
+POST
+
+DATA:
+{
+    "Su_Account": "cptester990",
+    "Su_Password": "cptester990"
+}
+
+驗證成功會回傳：
+{
+    "data": [
+        {
+            "authority": "4",
+            "mailtoken": "hLogh5QJGGeuDjgb",
+            "suid": 92,
+            "token": "gh5Kcrt8r0r2JNF6"
+        }
+    ],
+    "message": "Success",
+    "workID": "A000_app",
+    "status": "00"
+}
+類似這樣的東西，你只要判斷status=00即可

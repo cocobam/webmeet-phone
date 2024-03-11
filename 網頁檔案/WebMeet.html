@@ -1,0 +1,140 @@
+
+
+<html itemscope itemtype="http://schema.org/Product" prefix="og: http://ogp.me/ns#" xmlns="http://www.w3.org/1999/html">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="content-type" content="text/html;charset=utf-8">
+
+    </head>
+   
+
+    
+    <body id="body33"  >
+        <div id="passview">
+        <img id= "image1" src="vv.png" />
+        <a id = "account">帳號</a>
+        <input id = "account1" type="text">
+        <a id = "password">密碼</a>
+        <input id ="password1" type="password"> 
+        <a id = "callback"></a>   
+        <button id = "loginn">
+            登入
+        </button>
+        
+        
+        </div>
+
+
+        <div id ="view" >
+            <div  id ="buttonhub" class="buttonhub">
+                <button id="banana" class="banana" onclick="screenshot()">下載</button>
+                <button id="drawImage" class="drawImage" onclick="reset()">清除筆畫</button> 
+                <a id="dratabe">筆畫粗細</a>    
+                <input id="width" type="range" value= "10" min="1"max="30"/>   
+                <a id="dratabe2">筆畫顏色</a>  
+                <input id="R" type="range" min="0"max="255" value= "255" oninput="change()" onchange="change()"/>
+                <input id="G" type="range" min="0"max="255" value= "0" oninput="change()" onchange="change()"/>
+                <input id="B" type="range" min="0"max="255" value= "0" oninput="change()" onchange="change()"/>   
+                
+                <a id="dratabe3"></a>
+                <button id="upload" onclick="upload()">上傳</button>
+                <a id="mods" >模式: 筆畫</a>
+                <button id="dra" onclick="return casee('0')">筆畫模式</button>
+                <button id="box" onclick="return casee('1'),colorpp('R')" >框選模式</button>
+                <button id="ring" onclick="return casee('2'),colorpp('Y')">圈選模式</button>
+                <a id="colorBR" >圈 框顏色</a>
+                <button id="紅" onclick="return colorpp('R')"></button>
+                <button id="黃" onclick="return colorpp('Y')"></button>
+                <button id="綠" onclick="return colorpp('G')"></button>
+                <button id="粉" onclick="return colorpp('P')"></button>
+                <button id="jumpBt2" onclick="jump2()">跳轉至視訊區</button>
+                
+                
+            </div>
+            <div id="jump">
+
+                <button id="jumpBt" onclick="jump33()">跳轉至修圖區</button>
+                <button id="shot" > 截圖</button>
+                <button id="room0" onclick="return channel('0')">room0</button>
+                <button id="room1" onclick="return channel('1')">room1</button>
+                <button id="room2" onclick="return channel('2')">room2</button>
+                <button id="room3" onclick="return channel('3')">room3</button>
+                <button id="room4" onclick="return channel('4')">room4</button>
+                <button id="room5" onclick="return channel('5')">room5</button>
+
+            </div>
+
+        <div id = "point" >
+
+            <!--jis視訊區-->
+        <div id = "video0" class="video" allow="camera; microphone; fullscreen; display-capture; autoplay" >                            
+        </div>
+        <div id = "video1" class="video" allow="camera; microphone; fullscreen; display-capture; autoplay" >                            
+        </div>
+        <div id = "video2" class="video" allow="camera; microphone; fullscreen; display-capture; autoplay" >                            
+        </div>
+        <div id = "video3" class="video" allow="camera; microphone; fullscreen; display-capture; autoplay" >                            
+        </div>
+        <div id = "video4" class="video" allow="camera; microphone; fullscreen; display-capture; autoplay" >                            
+        </div>
+        <div id = "video5" class="video" allow="camera; microphone; fullscreen; display-capture; autoplay" >                            
+        </div>
+            
+        </div>
+            <!--修圖區-->
+            <div style="position: absolute;
+                top : 1940px;">
+                <input type="text" id="testInput" /> 
+                <a id="tabe">👈 使用Ctrl+v 對左方空格做貼上圖片</a>
+                <a id="tabe2">👈 選擇上傳給手機端的圖片</a>
+                <input type="file" id="fileFile" accept="image/gif,image/jpeg,image/png,image/jpg" onchange="up()" />
+            </div>
+            
+            <div id="preview"> 
+                    <canvas id="Canvas" width="1700" height="930" ></canvas> 
+            </div>
+        </div> 
+        
+        
+        <!--外部連結-->
+        <link rel="stylesheet" href="style.css"/>
+        <script src = "WebMeet.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script>
+        <script type="module">
+            // Import the functions you need from the SDKs you need
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-app.js";
+            import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-analytics.js";
+            import { getDatabase } from "firebase/database";
+            import { getStorage } from "firebase/storage";
+
+            // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+          
+            // Your web app's Firebase configuration
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            const firebaseConfig = {
+              apiKey: "AIzaSyDLxNtk-CpkP7-h56YsjiTZQmyEgKZgnNU",
+              authDomain: "webmeet-2d0a5.firebaseapp.com",
+              projectId: "webmeet-2d0a5",
+              storageBucket: "webmeet-2d0a5.appspot.com",
+              messagingSenderId: "871838758545",
+              appId: "1:871838758545:web:147d8536be690a2e9c3130",
+              measurementId: "G-1N14LTQLPY",
+              storageBucket: "gs://king-a6be5.appspot.com",
+              databaseURL : "https://king-a6be5-default-rtdb.firebaseio.com/"
+            };
+          
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const analytics = getAnalytics(app);
+            const database = getDatabase(app);
+            const storage = getStorage(app);
+
+          </script>
+        <!--html2canvas div image化下載-->
+        <script  src="http://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+        <script src="https://meet.jit.si/external_api.js"></script> 
+        
+    </body>
+</html>
